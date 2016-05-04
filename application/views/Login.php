@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	<h1>Login</h1>
-		<form method="POST" action="">
+		<form method="POST" action="index.php/envia">
 			<table cellspacing="10">
 				<tr>
 					<td>
@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<label>Senha: </label>
 					</td>
 					<td align="left">
-						<input type="password" name="pass" id="password">
+						<input type="password" name="senha" id="senha">
 					</td>
 				</tr>
 				<tr>
