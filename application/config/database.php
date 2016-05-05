@@ -74,12 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	   => 'pgsql:host=localhost;port=5432;dbname=salf;user=postgres;password=postgres',
 	'hostname' => 'localhost',
 	'username' => 'postgres',
 	'password' => 'postgres',
 	'database' => 'salf',
-	'dbdriver' => '',
+	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
