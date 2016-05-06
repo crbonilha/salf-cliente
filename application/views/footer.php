@@ -1,8 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-	<footer>
-		<p>SALF. Todos os direitos reservados.</p>
-	</footer>
+	<div class="footer">
+		<footer>
+			SALF. Todos os direitos reservados.
+		</footer>
+	</div>
+</div>
 </body>
 </html>
