@@ -6,6 +6,8 @@ class Motivo extends CI_Controller {
 	public function index()
 	{
 		$data['titulo'] = 'Motivos de reserva';
+		$data['estilos'] = array('motivo');
+		$data['admin'] = true;
 
 		$this -> load -> model('motivo_modelo');
 		$data['motivos'] = $this -> motivo_modelo -> get_motivos();
