@@ -4,8 +4,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Envia extends CI_Controller {
 
 	function logar($login, $senha){
-		$mensagem = json_encode(array($login,$senha));
-		$resultado = file_get_contents('endereço_do_servidor/classe/metodo?login='.$login.'&senha='.$senha);
+		$data = array($login,$senha);
+		$data_string = json_encode($data);                                                                                   
+
+		$ch = curl_init('http://localhost:8080/salf-server/webresources/salf_server/post');
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+		    'Content-Type: application/json',
+		    'Content-Length: ' . strlen($data_string))
+		);                                                                                                                   
+
+		$result = curl_exec($ch);
+		echo $result;
 	}
 
 	public function index()
