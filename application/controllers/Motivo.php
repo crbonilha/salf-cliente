@@ -19,10 +19,30 @@ class Motivo extends CI_Controller {
 		return $motivos;
 	}
 
+	public function exclui_motivo($id_motivo) {
+		$data = array('id_motivo' => $id_motivo);
+		$data_string = json_encode($data);
+
+		$ch = curl_init('http://localhost:8080/salf-server/webresources/salf_server/excluiMotivo');
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+		    'Content-Type: application/json',
+		    'Content-Length: ' . strlen($data_string)
+		));
+
+		curl_exec($ch);
+	}
+
 	public function index() {
 		$data['titulo'] = 'Motivos de reserva';
 		$data['estilos'] = array('motivo');
 		$data['admin'] = true;
+
+		if($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$this -> exclui_motivo($_POST['id_motivo']);
+		}
 
 		$data['motivos'] = $this -> lista_motivos();
 

@@ -27,7 +27,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</td>
 						<?php if($admin === true) { ?>
 							<td>
-								<a href="#">Excluir</a>
+								<form method="post" action="<?php echo base_url(); ?>index.php/motivo" class="inline">
+									<button type="submit" name="id_motivo" value="<?php echo $motivo['id_motivo']; ?>" class="link-button">Excluir</button>
+								</form>
 							</td>
 						<?php } ?>
 					</tr>
