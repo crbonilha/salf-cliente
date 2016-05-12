@@ -13,43 +13,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<td>
 						<label>Descrição</label>
 					</td>
+					<?php if($admin === true) { ?>
+						<td></td>
+					<?php } ?>
 				</tr>
-				<?php if($admin === true) {
-					foreach($motivos as $motivo) { ?>
-						<tr>
-							<td>
-								<?php echo $motivo['id_motivo']; ?>
-							</td>
-							<td>
-								<?php echo $motivo['descricao']; ?>
-							</td>
+				<?php foreach($motivos as $motivo) { ?>
+					<tr>
+						<td>
+							<?php echo $motivo['id_motivo']; ?>
+						</td>
+						<td>
+							<?php echo $motivo['descricao']; ?>
+						</td>
+						<?php if($admin === true) { ?>
 							<td>
 								<a href="#">Excluir</a>
 							</td>
-						</tr>
-					<?php } ?>
+						<?php } ?>
+					</tr>
 				<?php } ?>
 			</table>
 			<h1>Cadastrar novo motivo</h1>
 			<form method="POST" action="#">
-					<table cellspacing="10">
-						<tr>
-								<td>
-									<label>Descrição</label>
-								</td>
-								<td>
-									<input type="text" name="descricao" placeholder="Digite a descrição" required></input>
-								</td>
-						</tr>
-						<tr>
-								<td>
-									<input type="submit" id="cadastrar"></input>
-								</td>
-								<td>
-									<input type="reset" id="limpar"></input>
-								</td>
-						</tr>
-					</table>
+				<table cellspacing="10">
+					<tr>
+						<td>
+							<label>Descrição</label>
+						</td>
+						<td>
+							<input type="text" name="descricao" placeholder="Digite a descrição" required></input>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="submit" id="cadastrar"></input>
+						</td>
+						<td>
+							<input type="reset" id="limpar"></input>
+						</td>
+					</tr>
+				</table>
 			</form>
 		</div>
 	</section>

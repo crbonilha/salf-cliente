@@ -5,7 +5,7 @@ class Envia extends CI_Controller {
 
 	function logar($login, $senha){
 		$data = array($login,$senha);
-		$data_string = json_encode($data);                                                                                   
+		$data_string = json_encode($data);
 
 		$ch = curl_init('http://localhost:8080/salf-server/webresources/salf_server/post');
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -14,7 +14,7 @@ class Envia extends CI_Controller {
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 		    'Content-Type: application/json',
 		    'Content-Length: ' . strlen($data_string))
-		);                                                                                                                   
+		);
 
 		$result = curl_exec($ch);
 		echo $result;
