@@ -1,35 +1,56 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<div id="container">
-	<table>
-		<th>
-			<td>Id</td>
-			<td>Descrição</td>
-			<?php if($admin === true) { ?>
-				<td></td>
-			<?php } ?>
-		</th>
-		<?php foreach($motivos as $motivo) { ?>
-		<tr>
-			<td><?php echo $motivo['id_motivo']; ?></td>
-			<td><?php echo $motivo['descricao']; ?></td>
-			<?php if($admin === true) { ?>
-				<td><a href="#">Excluir</a></td>
-			<?php } ?>
-		</tr>
-		<?php } ?>
-	</table>
-	<hr/>
-	<div>
-		<form method="POST" action="#">
-			<p style="text-align: center;">Cadastrar novo motivo</p>
-			<label>
-				Descrição: 
-				<input type="text" name="descricao" required></input>
-				<br/>
-				<input type="submit" id="cadastrar"></input>
-			</label>
-		</form>
-	</div>
+<div class="content">
+	<section>
+		<div id="container">
+			<h1>Lista de motivos</h1>
+			<table cellspacing="10">
+				<tr>
+					<td>
+						<label>Id</label>
+					</td>
+					<td>
+						<label>Descrição</label>
+					</td>
+				</tr>
+				<?php if($admin === true) {
+					foreach($motivos as $motivo) { ?>
+						<tr>
+							<td>
+								<?php echo $motivo['id_motivo']; ?>
+							</td>
+							<td>
+								<?php echo $motivo['descricao']; ?>
+							</td>
+							<td>
+								<a href="#">Excluir</a>
+							</td>
+						</tr>
+					<?php } ?>
+				<?php } ?>
+			</table>
+			<h1>Cadastrar novo motivo</h1>
+			<form method="POST" action="#">
+					<table cellspacing="10">
+						<tr>
+								<td>
+									<label>Descrição</label>
+								</td>
+								<td>
+									<input type="text" name="descricao" placeholder="Digite a descrição" required></input>
+								</td>
+						</tr>
+						<tr>
+								<td>
+									<input type="submit" id="cadastrar"></input>
+								</td>
+								<td>
+									<input type="reset" id="limpar"></input>
+								</td>
+						</tr>
+					</table>
+			</form>
+		</div>
+	</section>
 </div>
