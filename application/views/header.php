@@ -20,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<a href="<?php echo base_url(); ?>">Página inicial</a>
 					<a href="<?php echo base_url(); ?>index.php/login">Login</a>
 					<a href="<?php echo base_url(); ?>index.php/motivo">Motivos</a>
+					<a href="<?php echo base_url(); ?>index.php/sala">Salas</a>
 				</nav>
 			</header>
 		</div>
