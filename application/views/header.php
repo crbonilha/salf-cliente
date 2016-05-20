@@ -14,13 +14,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 	<div class="geral">
+		<?php if($titulo != null) {?>
 		<div class="header">
 			<header>
 				<nav>
 					<a href="<?php echo base_url(); ?>">Página inicial</a>
-					<a href="<?php echo base_url(); ?>index.php/login">Login</a>
+					<?php if($admin == true){ ?>
+						<a href="<?php echo base_url(); ?>index.php/login">Gerenciador de login</a>
+					<?php } ?>
 					<a href="<?php echo base_url(); ?>index.php/motivo">Motivos</a>
 					<a href="<?php echo base_url(); ?>index.php/sala">Salas</a>
 				</nav>
 			</header>
-		</div>
+		</div> <?php } ?>

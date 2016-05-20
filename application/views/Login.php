@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<section>
 		<div id="container">
 			<h1>Login</h1>
-				<form method="POST" action="<?php echo base_url(); ?>index.php/envia">
+				<form method="POST" action="<?php echo base_url(); ?>index.php/login">
 					<input type="hidden" name="formulario" value="execLogin">
 					<table cellspacing="10">
 						<tr>
