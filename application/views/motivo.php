@@ -20,16 +20,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<?php foreach($motivos as $motivo) { ?>
 					<tr>
 						<td>
-							<?php echo $motivo['id_motivo']; ?>
+							<?php echo $motivo['id']; ?>
 						</td>
 						<td>
 							<?php echo $motivo['descricao']; ?>
 						</td>
 						<?php if($admin === true) { ?>
 							<td>
-								<form method="post" action="<?php echo base_url(); ?>index.php/motivo" class="inline">
+								<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/motivo">
 									<input type="hidden" name="excluir"/>
-									<button type="submit" name="id_motivo" value="<?php echo $motivo['id_motivo']; ?>" class="link-button">Excluir</button>
+									<button type="submit" name="id" value="<?php echo $motivo['id']; ?>" class="link-button">Excluir</button>
 								</form>
 							</td>
 						<?php } ?>
@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<label>Id</label>
 						</td>
 						<td>
-							<input type="number" name="id_motivo" placeholder="Digite o id" required></input>
+							<input type="number" name="id" placeholder="Digite o id" required></input>
 						</td>
 					</tr>
 					<tr>

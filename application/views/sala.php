@@ -20,16 +20,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<?php foreach($salas as $sala) { ?>
 					<tr>
 						<td>
-							<?php echo $sala['id_sala']; ?>
+							<?php echo $sala['id']; ?>
 						</td>
 						<td>
 							<?php echo $sala['descricao']; ?>
 						</td>
 						<?php if($admin === true) { ?>
 							<td>
-								<form method="post" action="<?php echo base_url(); ?>index.php/sala" class="inline">
+								<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/sala">
 									<input type="hidden" name="excluir" value="excluir" />
-									<button type="submit" name="id_sala" value="<?php echo $sala['id_sala']; ?>" class="link-button">Excluir</button>
+									<button type="submit" name="id" value="<?php echo $sala['id']; ?>" class="link-button">Excluir</button>
 								</form>
 							</td>
 						<?php } ?>
@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<label>Id</label>
 						</td>
 						<td>
-							<input type="number" name="id_sala" placeholder="Digite o id" required></input>
+							<input type="number" name="id" placeholder="Digite o id" required></input>
 						</td>
 					</tr>
 					<tr>
