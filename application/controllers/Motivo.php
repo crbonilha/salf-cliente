@@ -5,22 +5,29 @@ class Motivo extends CI_Controller {
 
 	public function index() {
 		$data['titulo'] = 'Motivos de reserva';
-		$data['estilos'] = array('motivo');
+		$data['estilos'] = array('crud');
 		$data['admin'] = true; // TODO
 
 		$this -> load -> model('motivo_modelo');
 
 		if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if(isset($_POST['excluir']) && isset($_POST['id'])) {
-				$this -> motivo_modelo -> exclui_motivo($_POST['id']);
+				$this -> motivo_modelo -> exclui(array(
+					'id' => $_POST['id']
+				));
 			} else if(isset($_POST['alterar']) && isset($_POST['id']) && isset($_POST['descricao'])) {
-				$this -> motivo_modelo -> altera_motivo($_POST['id'], $_POST['descricao']);
+				$this -> motivo_modelo -> altera(array(
+					'id'        => $_POST['id'],
+					'descricao' => $_POST['descricao']
+				));
 			} else if(isset($_POST['cadastrar']) && isset($_POST['descricao'])) {
-				$this -> motivo_modelo -> cadastra_motivo($_POST['descricao']);
+				$this -> motivo_modelo -> cadastra(array(
+					'descricao' => $_POST['descricao']
+				));
 			}
 		}
 
-		$data['motivos'] = $this -> motivo_modelo -> lista_motivos();
+		$data['motivos'] = $this -> motivo_modelo -> lista();
 
 		$this -> load -> view('header', $data);
 		$this -> load -> view('motivo', $data);

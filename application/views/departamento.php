@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="content">
 	<section>
 		<div id="container">
-			<h1>Lista de salas</h1>
+			<h1>Lista de departamentos</h1>
 			<table cellspacing="10">
 				<tr>
 					<td>
@@ -17,27 +17,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<td></td>
 					<?php } ?>
 				</tr>
-				<?php if(isset($salas)) foreach($salas as $sala) { ?>
+				<?php if(isset($departamentos)) foreach($departamentos as $departamento) { ?>
 					<tr>
 						<td>
-							<?php echo $sala['id']; ?>
+							<?php echo $departamento['id']; ?>
 						</td>
 						<td>
-							<?php echo $sala['descricao']; ?>
+							<?php echo $departamento['descricao']; ?>
 						</td>
 						<?php if($admin === true) { ?>
 							<td>
-								<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/sala">
+								<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/departamento">
 									<input type="hidden" name="excluir" value="excluir" />
-									<button type="submit" name="id" value="<?php echo $sala['id']; ?>" class="link-button">Excluir</button>
+									<button type="submit" name="id" value="<?php echo $departamento['id']; ?>" class="link-button">Excluir</button>
 								</form>
 							</td>
 						<?php } ?>
 					</tr>
 				<?php } ?>
 			</table>
-			<h1>Alterar sala</h1>
-			<form method="post" action="<?php echo base_url(); ?>index.php/sala">
+			<h1>Alterar departamento</h1>
+			<form method="post" action="<?php echo base_url(); ?>index.php/departamento">
 				<input type="hidden" name="alterar" value="alterar" />
 				<table cellspacing="10">
 					<tr>
@@ -66,8 +66,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</tr>
 				</table>
 			</form>
-			<h1>Cadastrar nova sala</h1>
-			<form method="post" action="<?php echo base_url(); ?>index.php/sala">
+			<h1>Cadastrar novo departamento</h1>
+			<form method="post" action="<?php echo base_url(); ?>index.php/departamento">
 				<input type="hidden" name="cadastrar" value="cadastrar" />
 				<table cellspacing="10">
 					<tr>

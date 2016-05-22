@@ -1,36 +1,36 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Sala extends CI_Controller {
+class Departamento extends CI_Controller {
 
 	public function index() {
-		$data['titulo'] = 'Salas';
+		$data['titulo'] = 'Departamentos';
 		$data['estilos'] = array('crud');
 		$data['admin'] = true; // TODO
 
-		$this -> load -> model('sala_modelo');
+		$this -> load -> model('departamento_modelo');
 
 		if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if(isset($_POST['excluir']) && isset($_POST['id'])) {
-				$this -> sala_modelo -> exclui(array(
+				$this -> departamento_modelo -> exclui(array(
 					'id' => $_POST['id']
 				));
 			} else if(isset($_POST['alterar']) && isset($_POST['id']) && isset($_POST['descricao'])) {
-				$this -> sala_modelo -> altera(array(
+				$this -> departamento_modelo -> altera(array(
 					'id'        => $_POST['id'],
 					'descricao' => $_POST['descricao']
 				));
 			} else if(isset($_POST['cadastrar']) && isset($_POST['descricao'])) {
-				$this -> sala_modelo -> cadastra(array(
+				$this -> departamento_modelo -> cadastra(array(
 					'descricao' => $_POST['descricao']
 				));
 			}
 		}
 
-		$data['salas'] = $this -> sala_modelo -> lista();
+		$data['departamentos'] = $this -> departamento_modelo -> lista();
 
 		$this -> load -> view('header', $data);
-		$this -> load -> view('sala', $data);
+		$this -> load -> view('departamento', $data);
 		$this -> load -> view('footer', $data);
 	}
 
