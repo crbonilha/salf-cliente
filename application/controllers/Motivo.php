@@ -12,12 +12,9 @@ class Motivo extends CI_Controller {
 
 		if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if(isset($_POST['excluir']) && isset($_POST['id'])) {
-				$this -> motivo_modelo -> exclui(array(
-					'id' => $_POST['id']
-				));
+				$this -> motivo_modelo -> exclui($_POST['id']);
 			} else if(isset($_POST['alterar']) && isset($_POST['id']) && isset($_POST['descricao'])) {
-				$this -> motivo_modelo -> altera(array(
-					'id'        => $_POST['id'],
+				$this -> motivo_modelo -> altera($_POST['id'], array(
 					'descricao' => $_POST['descricao']
 				));
 			} else if(isset($_POST['cadastrar']) && isset($_POST['descricao'])) {
@@ -27,7 +24,7 @@ class Motivo extends CI_Controller {
 			}
 		}
 
-		$data['motivos'] = $this -> motivo_modelo -> lista();
+		$data['motivos'] = $this -> motivo_modelo -> lista(null);
 
 		$this -> load -> view('header', $data);
 		$this -> load -> view('motivo', $data);

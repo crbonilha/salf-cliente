@@ -12,12 +12,9 @@ class Departamento extends CI_Controller {
 
 		if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if(isset($_POST['excluir']) && isset($_POST['id'])) {
-				$this -> departamento_modelo -> exclui(array(
-					'id' => $_POST['id']
-				));
+				$this -> departamento_modelo -> exclui($_POST['id']);
 			} else if(isset($_POST['alterar']) && isset($_POST['id']) && isset($_POST['descricao'])) {
-				$this -> departamento_modelo -> altera(array(
-					'id'        => $_POST['id'],
+				$this -> departamento_modelo -> altera($_POST['id'], array(
 					'descricao' => $_POST['descricao']
 				));
 			} else if(isset($_POST['cadastrar']) && isset($_POST['descricao'])) {
@@ -27,7 +24,7 @@ class Departamento extends CI_Controller {
 			}
 		}
 
-		$data['departamentos'] = $this -> departamento_modelo -> lista();
+		$data['departamentos'] = $this -> departamento_modelo -> lista(null);
 
 		$this -> load -> view('header', $data);
 		$this -> load -> view('departamento', $data);

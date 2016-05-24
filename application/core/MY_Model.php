@@ -12,29 +12,27 @@ class MY_Model extends CI_Model {
 		$this -> server_url = 'http://localhost:8080/salf-server/webresources/salf_server/';
 	}
 
-	public function lista() {
-		$result = $this -> prepare_curl($this -> metodo . 'Listar', 'GET', true, null);
+	public function lista($id) {
+		$result = $this -> prepare_curl($this -> metodo . ($id != null ? '/' . $id : ''), 'GET', true, null);
 
 		$lista = json_decode($result, true);
 		return $lista;
 	}
 
-	public function exclui($array) {
-		$data_string = json_encode($array);
-
-		return $this -> prepare_curl($this -> metodo . 'Deletar', 'POST', false, $data_string);
+	public function exclui($id) {
+		return $this -> prepare_curl($this -> metodo . '/' . $id, 'DELETE', false, null);
 	}
 
-	public function altera($array) {
+	public function altera($id, $array) {
 		$data_string = json_encode($array);
 
-		return $this -> prepare_curl($this -> metodo . 'Alterar', 'POST', false, $data_string);
+		return $this -> prepare_curl($this -> metodo . '/' . $id, 'PUT', false, $data_string);
 	}
 
 	public function cadastra($array) {
 		$data_string = json_encode($array);
 
-		return $this -> prepare_curl($this -> metodo . 'Cadastrar', 'POST', false, $data_string);
+		return $this -> prepare_curl($this -> metodo, 'POST', false, $data_string);
 	}
 
 	public function prepare_curl($action, $custom_request, $return_transfer, $post_fields) {

@@ -12,12 +12,9 @@ class Sala extends CI_Controller {
 
 		if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if(isset($_POST['excluir']) && isset($_POST['id'])) {
-				$this -> sala_modelo -> exclui(array(
-					'id' => $_POST['id']
-				));
+				$this -> sala_modelo -> exclui($_POST['id']);
 			} else if(isset($_POST['alterar']) && isset($_POST['id']) && isset($_POST['descricao'])) {
-				$this -> sala_modelo -> altera(array(
-					'id'        => $_POST['id'],
+				$this -> sala_modelo -> altera($_POST['id'], array(
 					'descricao' => $_POST['descricao']
 				));
 			} else if(isset($_POST['cadastrar']) && isset($_POST['descricao'])) {
@@ -27,7 +24,7 @@ class Sala extends CI_Controller {
 			}
 		}
 
-		$data['salas'] = $this -> sala_modelo -> lista();
+		$data['salas'] = $this -> sala_modelo -> lista(null);
 
 		$this -> load -> view('header', $data);
 		$this -> load -> view('sala', $data);
