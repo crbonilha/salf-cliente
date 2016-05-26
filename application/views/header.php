@@ -19,8 +19,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<header>
 				<nav>
 					<a href="<?php echo base_url(); ?>">Página inicial</a>
-					<?php if($admin == true){ ?>
+					<?php if($admin === true){ ?>
 						<a href="<?php echo base_url(); ?>index.php/login">Gerenciador de login</a>
+						<a href="<?php echo base_url(); ?>index.php/professor">Professores</a>
 					<?php } ?>
 					<a href="<?php echo base_url(); ?>index.php/motivo">Motivos</a>
 					<a href="<?php echo base_url(); ?>index.php/sala">Salas</a>
