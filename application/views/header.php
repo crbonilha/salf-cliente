@@ -26,6 +26,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<a href="<?php echo base_url(); ?>index.php/motivo">Motivos</a>
 					<a href="<?php echo base_url(); ?>index.php/sala">Salas</a>
 					<a href="<?php echo base_url(); ?>index.php/departamento">Departamentos</a>
+					<?php if($admin === true){ ?>
+						<a href="<?php echo base_url(); ?>index.php/incidencia">Incidências</a>
+					<?php } ?>
 				</nav>
 			</header>
 		</div> <?php } ?>
