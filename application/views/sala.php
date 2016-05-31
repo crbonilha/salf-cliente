@@ -4,38 +4,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="content">
 	<section>
 		<div id="container">
-			<h1>Lista de salas</h1>
-			<table cellspacing="10">
-				<tr>
-					<td>
-						<label>Id</label>
-					</td>
-					<td>
-						<label>Descrição</label>
-					</td>
-					<?php if($admin === true) { ?>
-						<td></td>
-					<?php } ?>
-				</tr>
-				<?php if(isset($salas)) foreach($salas as $sala) { ?>
+			<div id="listar_sala">
+				<h1>Lista de salas</h1>
+				<table cellspacing="10">
 					<tr>
 						<td>
-							<?php echo $sala['id']; ?>
+							<label>Id</label>
 						</td>
 						<td>
-							<?php echo $sala['descricao']; ?>
+							<label>Descrição</label>
 						</td>
 						<?php if($admin === true) { ?>
-							<td>
-								<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/sala">
-									<input type="hidden" name="excluir" value="excluir" />
-									<button type="submit" name="id" value="<?php echo $sala['id']; ?>" class="link-button">Excluir</button>
-								</form>
-							</td>
+							<td></td>
 						<?php } ?>
 					</tr>
-				<?php } ?>
-			</table>
+					<?php if(isset($salas)) foreach($salas as $sala) { ?>
+						<tr>
+							<td>
+								<?php echo $sala['id']; ?>
+							</td>
+							<td>
+								<?php echo $sala['descricao']; ?>
+							</td>
+							<?php if($admin === true) { ?>
+								<td>
+									<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/sala">
+										<input type="hidden" name="excluir" value="excluir" />
+										<button type="submit" name="id" value="<?php echo $sala['id']; ?>" class="link-button">Excluir</button>
+									</form>
+								</td>
+							<?php } ?>
+						</tr>
+					<?php } ?>
+				</table>
+			</div>
 			<h1>Alterar sala</h1>
 			<form method="post" action="<?php echo base_url(); ?>index.php/sala">
 				<input type="hidden" name="alterar" value="alterar" />
@@ -45,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<label>Id</label>
 						</td>
 						<td>
-							<input type="number" name="id" placeholder="Digite o id" required></input>
+							<input type="number" min="1" name="id" placeholder="Digite o id" required></input>
 						</td>
 					</tr>
 					<tr>

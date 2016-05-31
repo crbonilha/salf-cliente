@@ -35,6 +35,27 @@ html, body {
 	transform: translate(-50%, -50%);
 }
 
+#listar_motivo {
+	height: 300px;
+	overflow: auto;
+}
+
+#listar_professor {
+	height: 130px;
+	overflow: auto;
+	width: 400px;
+}
+
+#listar_sala {
+	height: 300px;
+	overflow: auto;
+}
+
+#listar_departamento {
+	height: 300px;
+	overflow: auto;
+}
+
 h1 {
 	color: #444;
 	background-color: transparent;
