@@ -56,6 +56,11 @@ html, body {
 	overflow: auto;
 }
 
+#listar_incidencia {
+	height: 300px;
+	overflow: auto;
+}
+
 h1 {
 	color: #444;
 	background-color: transparent;

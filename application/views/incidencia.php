@@ -4,38 +4,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="content">
 	<section>
 		<div id="container">
-			<h1>Lista de incidências</h1>
-			<table cellspacing="10">
-				<tr>
-					<td>
-						<label>Id</label>
-					</td>
-					<td>
-						<label>Descrição</label>
-					</td>
-					<?php if($admin === true) { ?>
-						<td></td>
-					<?php } ?>
-				</tr>
-				<?php if(isset($incidencias)) foreach($incidencias as $incidencia) { ?>
+			<div id="listar_incidencia">
+				<h1>Lista de incidências</h1>
+				<table cellspacing="10">
 					<tr>
 						<td>
-							<?php echo $incidencia['id']; ?>
+							<label>Id</label>
 						</td>
 						<td>
-							<?php echo $incidencia['descricao']; ?>
+							<label>Descrição</label>
 						</td>
 						<?php if($admin === true) { ?>
-							<td>
-								<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/incidencia">
-									<input type="hidden" name="excluir"/>
-									<button type="submit" name="id" value="<?php echo $incidencia['id']; ?>" class="link-button">Excluir</button>
-								</form>
-							</td>
+							<td></td>
 						<?php } ?>
 					</tr>
-				<?php } ?>
-			</table>
+					<?php if(isset($incidencias)) foreach($incidencias as $incidencia) { ?>
+						<tr>
+							<td>
+								<?php echo $incidencia['id']; ?>
+							</td>
+							<td>
+								<?php echo $incidencia['descricao']; ?>
+							</td>
+							<?php if($admin === true) { ?>
+								<td>
+									<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/incidencia">
+										<input type="hidden" name="excluir"/>
+										<button type="submit" name="id" value="<?php echo $incidencia['id']; ?>" class="link-button">Excluir</button>
+									</form>
+								</td>
+							<?php } ?>
+						</tr>
+					<?php } ?>
+				</table>
+			</div>
 			<?php if($admin === true) { ?>
 				<h1>Alterar incidência</h1>
 				<form method="post" action="<?php echo base_url(); ?>index.php/incidencia">
