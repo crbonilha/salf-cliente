@@ -23,17 +23,19 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		switch ($_POST['formulario']) {
-			case 'execLogin':
-				$this->logar($_POST['login'], $_POST['senha']);
-				break;
-			
-			default:
-				$data['titulo'] = null;
-				$this -> load -> view('header', $data);
-				$this -> load -> view('login', $data);
-				$this -> load -> view('footer', $data);
-				break;
+		if($_SERVER['REQUEST_METHOD'] == 'POST') {
+			switch ($_POST['formulario']) {
+				case 'execLogin':
+					$this->logar($_POST['login'], $_POST['senha']);
+					break;
+				
+				default:
+					$data['titulo'] = null;
+					$this -> load -> view('header', $data);
+					$this -> load -> view('login', $data);
+					$this -> load -> view('footer', $data);
+					break;
+			}
 		}
 	}
 }

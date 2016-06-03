@@ -61,6 +61,12 @@ html, body {
 	overflow: auto;
 }
 
+#listar_reserva {
+	height: 130px;
+	overflow: auto;
+	width: 400px;
+}
+
 h1 {
 	color: #444;
 	background-color: transparent;
@@ -73,4 +79,8 @@ h1 {
 
 nav a {
 	padding: 10px 20px;
+}
+
+table {
+	width: 100%;
 }

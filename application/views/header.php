@@ -29,6 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php if($admin === true){ ?>
 						<a href="<?php echo base_url(); ?>index.php/incidencia">Incidências</a>
 					<?php } ?>
+					<a href="<?php echo base_url(); ?>index.php/reserva">Reservas</a>
 				</nav>
 			</header>
 		</div> <?php } ?>
