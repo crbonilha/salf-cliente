@@ -9,4 +9,30 @@ class Reserva_modelo extends MY_Model {
 		$this -> metodo = 'reserva';
 	}
 
+	public function lista($params) {
+		return parent::lista(isset($params) ? $params['id'] : null);
+	}
+
+	public function prepara_exclui($params) {
+		return parent::exclui($params['id']);
+	}
+
+	public function prepara_altera($params) {
+		return parent::altera($params['id'], array(
+			'sala'   => $params['sala'],
+			'motivo' => $params['motivo'],
+			'data'   => $params['data'],
+			'hora'   => $params['hora'],
+		));
+	}
+
+	public function prepara_cadastra($params) {
+		return parent::cadastra(array(
+			'sala'   => $params['sala'],
+			'motivo' => $params['motivo'],
+			'data'   => $params['data'],
+			'hora'   => $params['hora'],
+		));
+	}
+
 }

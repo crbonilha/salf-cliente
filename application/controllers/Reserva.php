@@ -7,35 +7,15 @@ class Reserva extends CI_Controller {
 		$data['titulo'] = 'Reserva';
 		$data['estilos'] = array('crud');
 		$data['admin'] = true; // TODO
+		$data['debug'] = true;
 
 		$this -> load -> model('reserva_modelo');
 		if($_SERVER['REQUEST_METHOD'] == 'POST') {
-			switch ($_POST['formulario']) {
-				case 'cadastrar':
-					$this -> reserva_modelo -> cadastra(array(
-						'sala' => $_POST['sala'],
-						'motivo' => $_POST['motivo'],
-						'data' => $_POST['data'],
-						'hora' => $_POST['hora'],
-					));
-					break;
-				case 'alterar':
-					$this -> reserva_modelo -> altera($_POST['id'], array(
-						'sala' => $_POST['sala'],
-						'motivo' => $_POST['motivo'],
-						'data' => $_POST['data'],
-						'hora' => $_POST['hora'],
-					));
-					break;
-				case 'excluir':
-					$this -> reserva_modelo -> exclui($_POST['id']);
-					break;
-				default:
-					echo 'Problema ao executar operação';
-			}
+			$data['crud_http'] = $this -> reserva_modelo -> crud($_POST);
 		}
 
-		$data['reservas'] = $this -> reserva_modelo -> lista(null);
+        $data['get_http'] = $this -> reserva_modelo -> lista(null);
+		$data['reservas'] = json_decode($data['get_http']['response_body_ne'], true);
 
 		$this -> load -> view('header', $data);
 		$this -> load -> view('reserva', $data);

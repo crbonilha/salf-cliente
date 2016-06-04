@@ -7,24 +7,15 @@ class Sala extends CI_Controller {
 		$data['titulo'] = 'Salas';
 		$data['estilos'] = array('crud');
 		$data['admin'] = true; // TODO
+		$data['debug'] = true;
 
 		$this -> load -> model('sala_modelo');
-
 		if($_SERVER['REQUEST_METHOD'] == 'POST') {
-			if(isset($_POST['excluir']) && isset($_POST['id'])) {
-				$this -> sala_modelo -> exclui($_POST['id']);
-			} else if(isset($_POST['alterar']) && isset($_POST['id']) && isset($_POST['descricao'])) {
-				$this -> sala_modelo -> altera($_POST['id'], array(
-					'descricao' => $_POST['descricao']
-				));
-			} else if(isset($_POST['cadastrar']) && isset($_POST['descricao'])) {
-				$this -> sala_modelo -> cadastra(array(
-					'descricao' => $_POST['descricao']
-				));
-			}
+			$data['crud_http'] = $this -> sala_modelo -> crud($_POST);
 		}
 
-		$data['salas'] = $this -> sala_modelo -> lista(null);
+        $data['get_http'] = $this -> sala_modelo -> lista(null);
+		$data['salas'] = json_decode($data['get_http']['response_body_ne'], true);
 
 		$this -> load -> view('header', $data);
 		$this -> load -> view('sala', $data);

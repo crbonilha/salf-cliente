@@ -7,35 +7,19 @@ class Professor extends CI_Controller {
 		$data['titulo'] = 'Professores';
 		$data['estilos'] = array('crud');
 		$data['admin'] = true; // TODO
+		$data['debug'] = true;
 
 		$this -> load -> model('professor_modelo');
-
 		if($_SERVER['REQUEST_METHOD'] == 'POST') {
-			if(isset($_POST['excluir']) && isset($_POST['id'])) {
-				$this -> professor_modelo -> exclui($_POST['id']);
-			} else if(isset($_POST['alterar']) && isset($_POST['id']) && isset($_POST['nome']) &&
-			isset($_POST['senha']) && isset($_POST['id_departamento']) && isset($_POST['email'])) {
-				$this -> professor_modelo -> altera($_POST['id'], array(
-					'nome'            => $_POST['nome'],
-					'senha'           => $_POST['senha'],
-					'id_departamento' => $_POST['id_departamento'],
-					'email'           => $_POST['email'],
-				));
-			} else if(isset($_POST['cadastrar']) && isset($_POST['nome']) && isset($_POST['senha']) &&
-			isset($_POST['id_departamento']) && isset($_POST['email'])) {
-				$this -> professor_modelo -> cadastra(array(
-					'nome'            => $_POST['nome'],
-					'senha'           => $_POST['senha'],
-					'id_departamento' => $_POST['id_departamento'],
-					'email'           => $_POST['email'],
-				));
-			}
+			$data['crud_http'] = $this -> professor_modelo -> crud($_POST);
 		}
 
-		$data['professores'] = $this -> professor_modelo -> lista(null);
+        $data['get_http'] = $this -> professor_modelo -> lista(null);
+		$data['professores'] = json_decode($data['get_http']['response_body_ne'], true);
 
 		$this -> load -> model('departamento_modelo');
-		$data['departamentos'] = $this -> departamento_modelo -> lista(null);
+		$data['dep_get_http'] = $this -> departamento_modelo -> lista(null);
+		$data['departamentos'] = json_decode($data['dep_get_http']['response_body_ne'], true);
 
 		$this -> load -> view('header', $data);
 		$this -> load -> view('professor', $data);

@@ -36,13 +36,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<?php echo $reserva['sala']; ?>
 							</td>
 							<td>
+								<?php echo $reserva['motivo']; ?>
+							</td>
+							<td>
 								<?php echo $reserva['data']; ?>
 							</td>
 							<td>
 								<?php echo $reserva['hora']; ?>
-							</td>
-							<td>
-								<?php echo $reserva['motivo']; ?>
 							</td>
 							<?php if($admin === true) { ?>
 								<td>
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php } ?>
 				</table>
 			</div>
-			<h1>Alterar professor</h1>
+			<h1>Alterar reserva</h1>
 			<form method="post" action="<?php echo base_url(); ?>index.php/reserva">
 				<input type="hidden" name="formulario" value="alterar" />
 				<table cellspacing="10">
@@ -110,7 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</tr>
 				</table>
 			</form>
-			<h1>Cadastrar nova Reserva</h1>
+			<h1>Cadastrar nova reserva</h1>
 				<form method="post" action="<?php echo base_url(); ?>index.php/reserva">
 					<input type="hidden" name="formulario" value="cadastrar" />
 					<table cellspacing="10">

@@ -7,24 +7,15 @@ class Motivo extends CI_Controller {
 		$data['titulo'] = 'Motivos de reserva';
 		$data['estilos'] = array('crud');
 		$data['admin'] = true; // TODO
+		$data['debug'] = true;
 
 		$this -> load -> model('motivo_modelo');
-
 		if($_SERVER['REQUEST_METHOD'] == 'POST') {
-			if(isset($_POST['excluir']) && isset($_POST['id'])) {
-				$this -> motivo_modelo -> exclui($_POST['id']);
-			} else if(isset($_POST['alterar']) && isset($_POST['id']) && isset($_POST['descricao'])) {
-				$this -> motivo_modelo -> altera($_POST['id'], array(
-					'descricao' => $_POST['descricao']
-				));
-			} else if(isset($_POST['cadastrar']) && isset($_POST['descricao'])) {
-				$this -> motivo_modelo -> cadastra(array(
-					'descricao' => $_POST['descricao']
-				));
-			}
+			$data['crud_http'] = $this -> motivo_modelo -> crud($_POST);
 		}
 
-		$data['motivos'] = $this -> motivo_modelo -> lista(null);
+        $data['get_http'] = $this -> motivo_modelo -> lista(null);
+		$data['motivos'] = json_decode($data['get_http']['response_body_ne'], true);
 
 		$this -> load -> view('header', $data);
 		$this -> load -> view('motivo', $data);
