@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<?php if($admin === true) { ?>
 								<td>
 									<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/incidencia">
-										<input type="hidden" name="excluir"/>
+										<input type="hidden" name="formulario" value="excluir" />
 										<button type="submit" name="id" value="<?php echo $incidencia['id']; ?>" class="link-button">Excluir</button>
 									</form>
 								</td>
@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php if($admin === true) { ?>
 				<h1>Alterar incidência</h1>
 				<form method="post" action="<?php echo base_url(); ?>index.php/incidencia">
-					<input type="hidden" name="alterar" value="alterar" />
+					<input type="hidden" name="formulario" value="alterar" />
 					<table cellspacing="10">
 						<tr>
 							<td>
@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</form>
 				<h1>Cadastrar nova incidência</h1>
 				<form method="post" action="<?php echo base_url(); ?>index.php/incidencia">
-					<input type="hidden" name="cadastrar" value="cadastrar" />
+					<input type="hidden" name="formulario" value="cadastrar" />
 					<table cellspacing="10">
 						<tr>
 							<td>
