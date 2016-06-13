@@ -80,6 +80,12 @@ class MY_Model extends CI_Model {
 
 			// não escapado pois precisa ser interpretado pelo php
 			$response['response_body_ne'] = substr($response['all'], $header_size);
+		} else {
+			// servidor não respondeu
+			$response['request'] = null;
+			$response['response_body'] = "{\"error\": \"Não houve resposta do servidor.\"}";
+			$response['response'] = null;
+			$response['response_body_ne'] = null;
 		}
 
 		return $response;
