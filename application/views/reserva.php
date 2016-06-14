@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<?php echo $reserva['data']; ?>
 							</td>
 							<td>
-								<?php echo $reserva['hora']; ?>
+								<?php echo $reserva['id_horario']; ?>
 							</td>
 							<?php if($admin === true) { ?>
 								<td>
@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<label>Hora</label>
 						</td>
 						<td>
-							<input type="text" name="hora" required></input>
+							<input type="number" name="id_horario" required></input>
 						</td>
 					</tr>
 					<tr>
@@ -143,7 +143,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<label>Hora</label>
 							</td>
 							<td>
-								<input type="text" name="hora" required></input>
+								<input type="number" name="id_horario" required></input>
 							</td>
 						</tr>
 						<tr>

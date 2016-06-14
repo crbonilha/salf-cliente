@@ -19,19 +19,19 @@ class Reserva_modelo extends MY_Model {
 
 	public function prepara_altera($params) {
 		return parent::altera($params['id'], array(
-			'sala'   => $params['sala'],
-			'motivo' => $params['motivo'],
-			'data'   => $params['data'],
-			'hora'   => $params['hora'],
+			'sala'       => $params['sala'],
+			'motivo'     => $params['motivo'],
+			'data'       => $params['data'],
+			'id_horario' => $params['id_horario'],
 		));
 	}
 
 	public function prepara_cadastra($params) {
 		return parent::cadastra(array(
-			'sala'   => $params['sala'],
-			'motivo' => $params['motivo'],
-			'data'   => $params['data'],
-			'hora'   => $params['hora'],
+			'sala'       => $params['sala'],
+			'motivo'     => $params['motivo'],
+			'data'       => $params['data'],
+			'id_horario' => $params['id_horario'],
 		));
 	}
 
