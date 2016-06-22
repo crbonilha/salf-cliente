@@ -62,7 +62,7 @@ html, body {
 }
 
 #listar_reserva {
-	height: 130px;
+	height: 460px;
 	overflow: auto;
 	width: 400px;
 }
@@ -84,3 +84,11 @@ nav a {
 table {
 	width: 100%;
 }
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+} 
