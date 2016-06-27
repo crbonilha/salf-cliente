@@ -3,39 +3,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
-	function logar($login, $senha){
-		$data = array('usuario' => $login, 'senha' => $senha);
-		$data_string = json_encode($data);
+	public function index() {
+		$data['titulo'] = 'Página inicial';
+		$data['debug'] = true;
 
-		$ch = curl_init('http://localhost:8080/salf-server/webresources/salf_server/login');
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-		    'Content-Type: application/json',
-		    'Content-Length: ' . strlen($data_string))
-		);
+		$this -> load -> model('login_modelo');
+		if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['formulario'] == 'execLogin') {
+			$data['get_http'] = $this -> login_modelo -> login($_POST['login'], $_POST['senha']);
+			$ans = json_decode($data['get_http']['response_body_ne'], true);
 
-		$result = curl_exec($ch);
-		$login = json_decode($result, true);
-		var_dump($login);
-	}
-
-	public function index()
-	{
-		if($_SERVER['REQUEST_METHOD'] == 'POST') {
-			switch ($_POST['formulario']) {
-				case 'execLogin':
-					$this->logar($_POST['login'], $_POST['senha']);
-					break;
-				
-				default:
-					$data['titulo'] = null;
-					$this -> load -> view('header', $data);
-					$this -> load -> view('login', $data);
-					$this -> load -> view('footer', $data);
-					break;
+			if(isset($ans['adm'])) {
+				$this -> load -> helper('cookie');
+				$this -> input -> set_cookie(array(
+					'name' => 'user',
+					'value' => $_POST['login'],
+					'expire' => '1234567'
+				));
+				$this -> input -> set_cookie(array(
+					'name' => 'password',
+					'value' => $_POST['senha'],
+					'expire' => '1234567'
+				));
+				$this -> input -> set_cookie(array(
+					'name' => 'adm',
+					'value' => ($ans['adm'] ? 'true' : 'false'),
+					'expire' => '1234567'
+				));
+				header('Location: ' . base_url() . 'index.php/reserva');
 			}
 		}
+
+		$this -> load -> view('header', $data);
+		$this -> load -> view('login', $data);
+		$this -> load -> view('footer', $data);
+	}
+
+	public function logout() {
+		$this -> load -> helper('cookie');
+		delete_cookie('user');
+		delete_cookie('password');
+		delete_cookie('adm');
+
+		header('Location: ' . base_url());
 	}
 }

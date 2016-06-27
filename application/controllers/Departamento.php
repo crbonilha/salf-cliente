@@ -3,10 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Departamento extends CI_Controller {
 
+	public function __construct() {
+		parent::__construct();
+
+		$this -> load -> helper('cookie');
+		$this -> adm = ($this -> input -> cookie('adm') == 'true' ? true : false);
+	}
+
 	public function index() {
 		$data['titulo'] = 'Departamentos';
 		$data['estilos'] = array('crud');
-		$data['admin'] = true; // TODO
+		$data['admin'] = $this -> adm;
 		$data['debug'] = true;
 
 		$this -> load -> model('departamento_modelo');
@@ -15,7 +22,10 @@ class Departamento extends CI_Controller {
 		}
 
         $data['get_http'] = $this -> departamento_modelo -> lista(null);
-		$data['departamentos'] = json_decode($data['get_http']['response_body_ne'], true);
+        $answer = json_decode($data['get_http']['response_body_ne'], true);
+        if(!isset($answer['error'])) {
+			$data['departamentos'] = $answer;
+        }
 
 		$this -> load -> view('header', $data);
 		$this -> load -> view('departamento', $data);

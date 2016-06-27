@@ -14,13 +14,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 	<div class="geral">
-		<?php if($titulo != 'aPágina inicial') {?>
+		<?php if($titulo != 'Página inicial') {?>
 		<div class="header">
 			<header>
 				<nav>
-					<a href="<?php echo base_url(); ?>">Página inicial</a>
 					<?php if(isset($admin) && $admin === true){ ?>
-						<a href="<?php echo base_url(); ?>index.php/login">Gerenciador de login</a>
 						<a href="<?php echo base_url(); ?>index.php/professor">Professores</a>
 					<?php } ?>
 					<a href="<?php echo base_url(); ?>index.php/motivo">Motivos</a>
@@ -30,6 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<a href="<?php echo base_url(); ?>index.php/incidencia">Incidências</a>
 					<?php } ?>
 					<a href="<?php echo base_url(); ?>index.php/reserva">Reservas</a>
+					<a href="<?php echo base_url(); ?>index.php/logout">Sair</a>
 				</nav>
 			</header>
 		</div> <?php } ?>

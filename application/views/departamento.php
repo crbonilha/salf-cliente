@@ -38,58 +38,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php } ?>
 				</table>
 			</div>
-			<h1>Alterar departamento</h1>
-			<form method="post" action="<?php echo base_url(); ?>index.php/departamento">
-				<input type="hidden" name="formulario" value="alterar" />
-				<table cellspacing="10">
-					<tr>
-						<td>
-							<label>Id</label>
-						</td>
-						<td>
-							<input type="number" min="1" name="id" placeholder="Digite o id" required></input>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label>Descrição</label>
-						</td>
-						<td>
-							<input type="text" name="descricao" placeholder="Digite a descrição" required></input>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="submit" id="cadastrar"></input>
-						</td>
-						<td>
-							<input type="reset" id="limpar"></input>
-						</td>
-					</tr>
-				</table>
-			</form>
-			<h1>Cadastrar novo departamento</h1>
-			<form method="post" action="<?php echo base_url(); ?>index.php/departamento">
-				<input type="hidden" name="formulario" value="cadastrar" />
-				<table cellspacing="10">
-					<tr>
-						<td>
-							<label>Descrição</label>
-						</td>
-						<td>
-							<input type="text" name="descricao" placeholder="Digite a descrição" required></input>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="submit" id="cadastrar"></input>
-						</td>
-						<td>
-							<input type="reset" id="limpar"></input>
-						</td>
-					</tr>
-				</table>
-			</form>
+			<?php if(isset($admin) && $admin === true) { ?>
+				<h1>Alterar departamento</h1>
+				<form method="post" action="<?php echo base_url(); ?>index.php/departamento">
+					<input type="hidden" name="formulario" value="alterar" />
+					<table cellspacing="10">
+						<tr>
+							<td>
+								<label>Id</label>
+							</td>
+							<td>
+								<input type="number" min="1" name="id" placeholder="Digite o id" required></input>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label>Descrição</label>
+							</td>
+							<td>
+								<input type="text" name="descricao" placeholder="Digite a descrição" required></input>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="submit" id="cadastrar"></input>
+							</td>
+							<td>
+								<input type="reset" id="limpar"></input>
+							</td>
+						</tr>
+					</table>
+				</form>
+				<h1>Cadastrar novo departamento</h1>
+				<form method="post" action="<?php echo base_url(); ?>index.php/departamento">
+					<input type="hidden" name="formulario" value="cadastrar" />
+					<table cellspacing="10">
+						<tr>
+							<td>
+								<label>Descrição</label>
+							</td>
+							<td>
+								<input type="text" name="descricao" placeholder="Digite a descrição" required></input>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="submit" id="cadastrar"></input>
+							</td>
+							<td>
+								<input type="reset" id="limpar"></input>
+							</td>
+						</tr>
+					</table>
+				</form>
+			<?php } ?>
 		</div>
 	</section>
 </div>

@@ -51,20 +51,30 @@ class MY_Model extends CI_Model {
 		return $this -> prepare_curl($this -> metodo, 'POST', $data_string);
 	}
 
-	public function prepare_curl($action, $custom_request, $post_fields) {
+	public function prepare_curl($action, $custom_request, $post_fields, $user = null, $password = null) {
 		$ch = curl_init($this -> server_url . $action); // endereço do servidor
+		$extra_headers = array();
 
 		curl_setopt($ch, CURLOPT_HEADER, true); // para imprimir o header da resposta
 		curl_setopt($ch, CURLINFO_HEADER_OUT, true); // para imprimir a requisição enviada
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $custom_request); // get, post, put ou delete
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // se trará resultados
+
+		$this -> load -> helper('cookie');
+ 		$cuser = ($user === null ? $this -> input -> cookie('user') : $user);
+		$cpassword = ($password === null ? $this -> input -> cookie('password') : $password);
+		if($cuser != null && $cpassword != null) {
+			$extra_headers []= 'user: ' . $cuser;
+			$extra_headers []= 'password: ' . $cpassword;
+		}
+
 		if($post_fields != null) { // para enviar parâmetros no corpo
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-		    	'Content-Type: application/json',
-		    	'Content-Length: ' . strlen($post_fields)
-			));
+			$extra_headers []= 'Content-Type: application/json';
+			$extra_headers []= 'Content-Length: ' . strlen($post_fields);
+			
 		}
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $extra_headers);
 
 		// envia a requisição
 		$response['all'] = curl_exec($ch);
@@ -85,7 +95,7 @@ class MY_Model extends CI_Model {
 			$response['request'] = null;
 			$response['response_body'] = "{\"error\": \"Não houve resposta do servidor.\"}";
 			$response['response'] = null;
-			$response['response_body_ne'] = null;
+			$response['response_body_ne'] = "{\"error\": \"Não houve resposta do servidor.\"}";
 		}
 
 		return $response;

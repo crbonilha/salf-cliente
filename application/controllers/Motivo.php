@@ -3,10 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Motivo extends CI_Controller {
 
+	public function __construct() {
+		parent::__construct();
+
+		$this -> load -> helper('cookie');
+		$this -> adm = ($this -> input -> cookie('adm') == 'true' ? true : false);
+	}
+
 	public function index() {
 		$data['titulo'] = 'Motivos de reserva';
 		$data['estilos'] = array('crud');
-		$data['admin'] = true; // TODO
+		$data['admin'] = $this -> adm;
 		$data['debug'] = true;
 
 		$this -> load -> model('motivo_modelo');
@@ -15,7 +22,10 @@ class Motivo extends CI_Controller {
 		}
 
         $data['get_http'] = $this -> motivo_modelo -> lista(null);
-		$data['motivos'] = json_decode($data['get_http']['response_body_ne'], true);
+        $answer = json_decode($data['get_http']['response_body_ne'], true);
+        if(!isset($answer['error'])) {
+			$data['motivos'] = $answer;
+        }
 
 		$this -> load -> view('header', $data);
 		$this -> load -> view('motivo', $data);

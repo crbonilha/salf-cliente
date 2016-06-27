@@ -17,8 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php } ?>
 		</footer>
 	</div>
-	<?php if(isset($get_http) && isset($get_http['response_body'])) {
-		$erro = json_decode($get_http['response_body'], true);
+	<?php if(isset($get_http) && isset($get_http['response_body_ne'])) {
+		$erro = json_decode($get_http['response_body_ne'], true);
 		if(isset($erro['error'])) { ?>
 			<script>
 				window.alert('<?php echo $erro['error']; ?>');
@@ -27,7 +27,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	} ?>
 	<?php if(isset($crud_http) && isset($crud_http['response_body_ne'])) {
 		$erro = json_decode($crud_http['response_body_ne'], true);
-		if(isset($erro['error'])) { ?>
+		if(isset($erro['error'])) {
+			$erro['error'] = str_replace("'", "\"", $erro['error']); ?>
 			<script>
 				window.alert('<?php echo $erro['error']; ?>');
 			</script>
