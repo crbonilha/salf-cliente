@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<?php echo $reserva['data']; ?>
 								</td>
 								<td>
-									<?php echo $reserva['id_horario']; ?>
+									<?php echo $reserva['horario']; ?>
 								</td>
 								<?php if($admin === true) { ?>
 									<td>
@@ -108,7 +108,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<label>Hora</label>
 							</td>
 							<td>
-								<input type="number" min="1" name="id_horario" required></input>
+								<select name="id_horario">
+									<?php if(isset($horarios)) foreach($horarios as $horario) { ?>
+										<option value="<?php echo $horario['id']; ?>"><?php echo $horario['descricao']; ?></option>
+									<?php } ?>
+								</select>
 							</td>
 						</tr>
 						<tr>
@@ -162,7 +166,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<label>Hora</label>
 								</td>
 								<td>
-									<input type="number" min="1" name="id_horario" required></input>
+									<select name="id_horario">
+										<?php if(isset($horarios)) foreach($horarios as $horario) { ?>
+											<option value="<?php echo $horario['id']; ?>"><?php echo $horario['descricao']; ?></option>
+										<?php } ?>
+									</select>
 								</td>
 							</tr>
 							<tr>

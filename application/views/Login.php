@@ -10,10 +10,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<table cellspacing="10">
 						<tr>
 							<td>
-							<label>Login: </label>
+							<label>Email: </label>
 							</td>
 							<td align="left">
-								<input type="text" name="login" id="login" placeholder="Digite seu login aqui">
+								<input type="text" name="login" id="login" placeholder="Digite seu email aqui">
 							</td>
 						</tr>
 						<tr>

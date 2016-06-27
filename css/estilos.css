@@ -64,7 +64,6 @@ html, body {
 #listar_reserva {
 	height: 460px;
 	overflow: auto;
-	width: 400px;
 }
 
 h1 {
