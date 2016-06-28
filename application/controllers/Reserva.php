@@ -8,6 +8,11 @@ class Reserva extends CI_Controller {
 
 		$this -> load -> helper('cookie');
 		$this -> adm = ($this -> input -> cookie('adm') == 'true' ? true : false);
+
+		$this -> load -> library('util');
+		if(!$this -> util -> validacao_adm()) {
+			$this -> adm = true;
+		}
 	}
 
 	public function index() {

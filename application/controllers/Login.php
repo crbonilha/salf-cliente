@@ -3,8 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
+	public function __construct() {
+		parent::__construct();
+
+		$this -> load -> library('util');
+		$this -> adm = !$this -> util -> validacao_adm();
+	}
+
 	public function index() {
-		$data['titulo'] = 'Página inicial';
+		$data['titulo'] = ($this -> adm ? 'Página inicial - adm' : 'Página inicial');
+		if($this -> adm) {
+			$data['admin'] = true;
+		}
 		$data['debug'] = true;
 
 		$this -> load -> model('login_modelo');

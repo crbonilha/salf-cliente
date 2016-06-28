@@ -3,8 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Util {
 
-	public function abc() {
-
+	// flag que libera funções de administrador para usuário comum (para testes)
+	public function validacao_adm() {
+		return false;
 	}
 
 }

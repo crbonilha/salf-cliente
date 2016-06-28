@@ -24,9 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<td>
 								<label>Hora</label>
 							</td>
-							<?php if($admin === true) { ?>
-								<td></td>
-							<?php } ?>
+							<td></td>
 						</tr>
 						<?php if(isset($reservas)) foreach($reservas as $reserva) { ?>
 							<tr>
@@ -45,14 +43,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<td>
 									<?php echo $reserva['id_horario']; ?>
 								</td>
-								<?php if($admin === true) { ?>
-									<td>
-										<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/reserva">
-											<input type="hidden" name="formulario" value="excluir" />
-											<button type="submit" name="id" value="<?php echo $reserva['id']; ?>" class="link-button">Excluir</button>
-										</form>
-									</td>
-								<?php } ?>
+								<td>
+									<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/reserva">
+										<input type="hidden" name="formulario" value="excluir" />
+										<button type="submit" name="id" value="<?php echo $reserva['id']; ?>" class="link-button">Excluir</button>
+									</form>
+								</td>
 							</tr>
 						<?php } ?>
 					</table>
