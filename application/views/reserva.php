@@ -5,9 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<section>
 		<div id="container">
 			<section class="box right">
-<<<<<<< HEAD
+				<h1>Lista de reservas</h1>
 				<div id="listar_reserva">
-					<h1>Lista de reservas</h1>
 					<table cellspacing="10">
 						<tr>
 							<td>
@@ -25,72 +24,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<td>
 								<label>Hora</label>
 							</td>
-							<td></td>
+							<?php if($admin === true) { ?>
+								<td></td>
+							<?php } ?>
 						</tr>
 						<?php if(isset($reservas)) foreach($reservas as $reserva) { ?>
-=======
-				<h1>Lista de reservas</h1>
-					<div id="listar_reserva">
-						<table cellspacing="10">
->>>>>>> 3528a38987e9d269e33f162f28307c6f8756abe0
 							<tr>
 								<td>
-									<label>Id</label>
+									<?php echo $reserva['id']; ?>
 								</td>
 								<td>
-									<label>Sala</label>
+									<?php echo $reserva['sala']; ?>
 								</td>
 								<td>
-									<label>Motivo</label>
+									<?php echo $reserva['motivo']; ?>
 								</td>
 								<td>
-									<label>Data</label>
+									<?php echo $reserva['data']; ?>
 								</td>
 								<td>
-									<label>Hora</label>
+									<?php echo $reserva['horario']; ?>
 								</td>
-<<<<<<< HEAD
-								<td>
-									<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/reserva">
-										<input type="hidden" name="formulario" value="excluir" />
-										<button type="submit" name="id" value="<?php echo $reserva['id']; ?>" class="link-button">Excluir</button>
-									</form>
-								</td>
-=======
 								<?php if($admin === true) { ?>
-									<td></td>
+									<td>
+										<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/reserva">
+											<input type="hidden" name="formulario" value="excluir" />
+											<button type="submit" name="id" value="<?php echo $reserva['id']; ?>" class="link-button">Excluir</button>
+										</form>
+									</td>
 								<?php } ?>
->>>>>>> 3528a38987e9d269e33f162f28307c6f8756abe0
 							</tr>
-							<?php if(isset($reservas)) foreach($reservas as $reserva) { ?>
-								<tr>
-									<td>
-										<?php echo $reserva['id']; ?>
-									</td>
-									<td>
-										<?php echo $reserva['sala']; ?>
-									</td>
-									<td>
-										<?php echo $reserva['motivo']; ?>
-									</td>
-									<td>
-										<?php echo $reserva['data']; ?>
-									</td>
-									<td>
-										<?php echo $reserva['horario']; ?>
-									</td>
-									<?php if($admin === true) { ?>
-										<td>
-											<form class="inline" method="post" action="<?php echo base_url(); ?>index.php/reserva">
-												<input type="hidden" name="formulario" value="excluir" />
-												<button type="submit" name="id" value="<?php echo $reserva['id']; ?>" class="link-button">Excluir</button>
-											</form>
-										</td>
-									<?php } ?>
-								</tr>
-							<?php } ?>
-						</table>
-					</div>
+						<?php } ?>
+					</table>
+				</div>
 			</section>
 			<section class="box left">
 				<h1>Alterar reserva</h1>
