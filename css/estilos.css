@@ -35,34 +35,36 @@ html, body {
 	transform: translate(-50%, -50%);
 }
 
-#listar_motivo {
-	height: 300px;
+#listar_motivo{
 	overflow: auto;
+	height: 250px;
+	width: 200px;
 }
 
 #listar_professor {
-	height: 130px;
+	height: 250px;
 	overflow: auto;
-	width: 400px;
 }
 
 #listar_sala {
-	height: 300px;
+	height: 250px;
 	overflow: auto;
+	width: 200px;
 }
 
 #listar_departamento {
-	height: 300px;
+	height: 250px;
 	overflow: auto;
+	width: 250px;
 }
 
 #listar_incidencia {
-	height: 300px;
+	height: 250px;
 	overflow: auto;
 }
 
 #listar_reserva {
-	height: 460px;
+	height: 425px;
 	overflow: auto;
 	width: 400px;
 }

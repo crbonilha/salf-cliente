@@ -46,6 +46,13 @@ class Reserva extends CI_Controller {
 			$data['motivos'] = $answer;
         }
 
+        $this -> load -> model('horario_modelo');
+		$data['get_http'] = $this -> horario_modelo -> lista(null);
+        $answer = json_decode($data['get_http']['response_body_ne'], true);
+        if(!isset($answer['error'])) {
+			$data['horarios'] = $answer;
+        }
+
 		$this -> load -> view('header', $data);
 		$this -> load -> view('reserva', $data);
 		$this -> load -> view('footer', $data);
