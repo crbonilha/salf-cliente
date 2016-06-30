@@ -34,16 +34,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<?php echo $reserva['id']; ?>
 								</td>
 								<td>
-									<?php echo $reserva['sala']; ?>
+									<?php echo $reserva['id_sala']; ?>
 								</td>
 								<td>
-									<?php echo $reserva['motivo']; ?>
+									<?php echo $reserva['id_motivo']; ?>
 								</td>
 								<td>
 									<?php echo $reserva['data']; ?>
 								</td>
 								<td>
-									<?php echo $reserva['horario']; ?>
+									<?php echo $reserva['id_horario']; ?>
 								</td>
 								<?php if($admin === true) { ?>
 									<td>

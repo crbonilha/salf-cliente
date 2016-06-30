@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<?php echo $professor['nome']; ?>
 									</td>
 									<td>
-										<?php echo $professor['departamento']; ?>
+										<?php echo $professor['id_departamento']; ?>
 									</td>
 									<td>
 										<?php echo $professor['email']; ?>

@@ -10,7 +10,7 @@ class MY_Model extends CI_Model {
 		parent::__construct();
 
 		$this -> server_url = 'http://localhost:8080/salf-server/webresources/salf_server/';
-		//$this -> server_url = 'http://192.168.173.55:8000/';
+		//$this -> server_url = 'http://192.168.173.225:8000/';
 	}
 
 	/*
